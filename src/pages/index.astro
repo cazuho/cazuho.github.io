@@ -1,4 +1,5 @@
 ---
+const pageTitle = "私について";
 ---
 
 <html lang="en">
@@ -7,7 +8,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} >
-    <title>Astro</title>
+    <title>{pageTitle}</title>
   </head>
   <body>
 	<a href="/">ホーム</a>
@@ -16,5 +17,6 @@
 
 	<h1>Astro</h1>
 	<h1>私のAstroサイト</h1>
+	<h1>{pageTitle}</h1>
   </body>
 </html>
