@@ -1,25 +1,8 @@
 ---
-import '../styles/global.css';
-
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-
-const pageTitle = "私について";
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "Blog Page";
 ---
-
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} >
-    <title>{pageTitle}</title>
-  </head>
-  <body>
-    <Header />
-  
-    <h1>私のAstroサイト</h1>
-    <h1>{pageTitle}</h1>
+<BaseLayout pageTitle={pageTitle}>
     <h1>私のAstro学習ブログ</h1>
     <p>ここには、私がAstroを学んでいく旅の様子を投稿します。</p>
     <ul>
@@ -27,9 +10,4 @@ const pageTitle = "私について";
         <li><a href="/posts/post-2/">記事2</a></li>
         <li><a href="/posts/post-3/">記事3</a></li>
     </ul>
-    <Footer />
-	<script>
-		import "../scripts/menu.js";
-	</script>
-  </body>
-</html>
+</BaseLayout>
