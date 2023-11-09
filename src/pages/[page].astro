@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+export async function getStaticPaths({ paginate }) {
+    const astronautPages = [{
+        astronaut: 'test1',
+    }, {
+        astronaut: 'test2',
+    }, {
+        astronaut: 'test3',
+    }, {
+        astronaut: 'test4',
+    }];
+    // 宇宙飛行士の配列から、1ページに2人づつ入るようにページを生成します
+    return paginate(astronautPages, { pageSize: 2 });
+}
+// ページネーションされたデータは、すべて"page"プロパティとして渡されます
+const { page } = Astro.props;
+const pageTitle = "pages"
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <h1>{page.currentPage}ページ</h1>
+    <ul>
+        {page.data.map(({ astronaut }) => <li>{astronaut}</li>)}
+    </ul>
+    {page.url.prev ? <a href={page.url.prev}>Previous</a> : null}
+    {page.url.next ? <a href={page.url.next}>Next</a> : null}
+</BaseLayout>
