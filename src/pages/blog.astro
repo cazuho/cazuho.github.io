@@ -3,11 +3,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import BlogPost from '../components/BlogPost.astro';
 const allPosts = await Astro.glob('../pages/posts/*.md');
 const pageTitle = "Latest";
+
+// 日付新しい順
+const sortedPosts = allPosts.sort((a, b) => {
+  const aDate = new Date(a.frontmatter.pubDate);
+  const bDate = new Date(b.frontmatter.pubDate);
+  return bDate.getTime() - aDate.getTime();
+});
 ---
 <BaseLayout pageTitle={pageTitle}>
     <ul>
-        {allPosts.map((post) => 
-            <BlogPost pubDate={post.frontmatter.pubDate}, url={post.url} title={post.frontmatter.title}, description={post.frontmatter.description}, tags={post.frontmatter.tags} />
+        {sortedPosts.map((post) => 
+            <BlogPost 
+                pubDate={post.frontmatter.pubDate}, 
+                url={post.url} title={post.frontmatter.title}, 
+                description={post.frontmatter.description}, 
+                tags={post.frontmatter.tags} 
+            />
         )}
     </ul>
 </BaseLayout>
