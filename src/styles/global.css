@@ -1,19 +1,24 @@
 html {
-    background-color: #f1f5f9;
+    background-color: #EEF0F2;
+    color: #14110F;
     font-family: sans-serif;
+    height: 100%;
 }
 
 html.dark {
-  background-color: #0d0950;
-  color: #fff;
+  background-color: #14110F;
+  color: #EEF0F2;
 }
 
 body {
     margin: 0 auto;
+    height: 100%;
     width: 100%;
     max-width: 80ch;
     padding: 1rem;
     line-height: 1.5;
+    display: flex;
+    flex-direction: column;
 }
 
 * {
@@ -26,6 +31,16 @@ h1 {
 }
 
 /* ナビゲーションのスタイル */
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-nav {
+  display: flex;
+}
+
 .hamburger {
     padding-right: 20px;
     cursor: pointer;
@@ -36,20 +51,20 @@ h1 {
     width: 40px;
     height: 5px;
     margin-bottom: 10px;
-    background-color: #ff9776;
+    background-color: #232ED1;
 }
 
 .nav-links {
     width: 100%;
     top: 5rem;
     left: 48px;
-    background-color: #ff9776;
+    background-color: #232ED1;
     display: none;
     margin: 0;
   }
   
   .dark .nav-links a {
-    color: #fff;
+    color: #EEF0F2;
   }
 
   .nav-links a {
@@ -59,12 +74,11 @@ h1 {
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: bold;
-    text-transform: uppercase;
   }
   
   .nav-links a:hover,
   .nav-links a:focus {
-    background-color: #ff9776;
+    text-decoration: underline;
   }
   
   .expanded {
@@ -88,3 +102,53 @@ h1 {
         display: none;
     }
   }
+
+/* タグのスタイル　*/
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+main a:hover{
+    text-decoration: underline;
+}
+
+.fa-tags {
+    color: #6A706E;
+    padding-right: 0.3rem;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tag a {
+  color: #6A706E;
+}
+
+.tag {
+    margin: 0.25em;
+    color: #6A706E;
+    padding: 0.25rem 0.25rem;
+    font-size: 0.75rem;
+}
+
+.article-count {
+  padding-left: 5px;
+  color: #232ED1;
+}
+
+/* ブログ記事のスタイル　*/
+article {
+  border-bottom: 1px solid #6A706E;
+  padding: 1rem 0.25rem;
+}
+
+article:last-child {
+  border-bottom: 0;
+}
+
+.main {
+  flex: 1;
+}
