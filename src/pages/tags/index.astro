@@ -7,6 +7,7 @@ const tagAndCount = tags.map(x => [x,tagsArray.filter(y => x === y).length])
 const pageTitle = "Tag index";
 ---
 <BaseLayout pageTitle={pageTitle}>
+    <h1>{pageTitle}</h1>
     <div class="tags">
         {tagAndCount.map((item) => (
             <p class="tag"><a href={`/tags/${item[0]}`}><i class="fa-solid fa-tags"></i>{item[0]}</a><span class="article-count">({item[1]})</span></p>

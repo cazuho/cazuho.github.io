@@ -27,79 +27,84 @@ body {
 
 h1 {
     margin: 1rem 0;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
 }
 
-/* ナビゲーションのスタイル */
-.header{
+h2 {
+  
+  font-size: 1.125rem;
+}
+
+@media screen and (min-width: 64em) {
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+/* --------------------------------------
+  Header
+-------------------------------------- */
+
+.header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  font-family: "Piazzolla", "Times New Roman", "YuMincho",
+    "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
+  font-weight: 700;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo-title {
+  margin-left: 5px;
 }
 
 .header-nav {
   display: flex;
 }
 
-.hamburger {
-    padding-right: 20px;
-    cursor: pointer;
+.header-nav-menu {
+  display: flex;
 }
 
-.hamburger .line {
-    display: block;
-    width: 40px;
-    height: 5px;
-    margin-bottom: 10px;
-    background-color: #232ED1;
+.header-nav-menu-item {
+  margin-right: 5px;
+}
+  
+.header-nav-menu-item > a:hover,
+.header-nav-menu-item > a:focus {
+  text-decoration: underline;
 }
 
-.nav-links {
-    width: 100%;
-    top: 5rem;
-    left: 48px;
-    background-color: #232ED1;
-    display: none;
-    margin: 0;
-  }
   
-  .dark .nav-links a {
-    color: #EEF0F2;
-  }
+  @media screen and (min-width: 64em) {
 
-  .nav-links a {
-    display: block;
-    text-align: center;
-    padding: 10px 0;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-  
-  .nav-links a:hover,
-  .nav-links a:focus {
-    text-decoration: underline;
-  }
-  
-  .expanded {
-    display: unset;
-  }
-  
-  @media screen and (min-width: 636px) {
-    .nav-links {
-      margin-left: 5em;
-      display: block;
-      position: static;
-      width: auto;
-      background: none;
+    .header-logo-img {
+      width: 32px;
+      height: 32px;
     }
-  
-    .nav-links a {
-      display: inline-block;
-      padding: 15px 20px;
+
+    .header-logo-title {
+      font-size: 1.5rem;
+      margin-left: 15px;
     }
-    .hamburger {
-        display: none;
+
+    .header-nav-menu-item > a {
+      font-size: 1.5rem;
+    }
+
+    .header-nav-menu-item {
+      margin-right: 15px;
     }
   }
 
@@ -142,7 +147,7 @@ main a:hover{
 /* ブログ記事のスタイル　*/
 article {
   border-bottom: 1px solid #6A706E;
-  padding: 1rem 0.25rem;
+  padding: 0rem 0.25rem 2rem;
 }
 
 article:last-child {
@@ -151,4 +156,13 @@ article:last-child {
 
 .main {
   flex: 1;
+}
+
+.footer {
+  text-align: center;
+  padding: .8rem;
+}
+
+.footer small {
+  font-size: 0.875rem;
 }

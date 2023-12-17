@@ -16,22 +16,22 @@ const { pageTitle } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} >
     <title>{pageTitle}</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Piazzolla:opsz,wght@8..30,400;8..30,700&display=swap">
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/36f9edd7e6.js" crossorigin="anonymous"></script>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="../../public/black-hole.svg" />
   </head>
   <body>
 	<Header />
   <main class="main">
-	<h1>{pageTitle}</h1>
     <slot />
   </main>
 	<Footer />
-	<script>
-		import "../scripts/menu.js";
-	</script>
   </body>
 </html>

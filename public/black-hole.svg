@@ -1,0 +1,28 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- ブラックホールの背景 -->
+  <circle cx="200" cy="200" r="200" class="background"/>
+
+  <!-- ブラックホールの「リング」 -->
+  <circle cx="200" cy="200" r="140" class="ring"/>
+
+  <!-- ブラックホールの中心 -->
+  <circle cx="200" cy="200" r="20" class="center"/>
+  <style>
+    circle.background circle.center {
+      fill: #14110F; <!-- ライトモードの色 -->
+    }
+    circle.ring {
+      fill: none;
+      stroke: #FC7A1E;
+      stroke-width: 40;
+    }
+    @media (prefers-color-scheme: dark) {
+      circle.background circle.center {
+        fill: #EEF0F2; <!-- ダークモードの色 -->
+      }
+      circle.ring {
+        stroke: #232ED1;
+      }
+    }
+  </style>
+</svg>

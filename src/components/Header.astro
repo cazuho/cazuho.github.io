@@ -1,16 +1,17 @@
 ---
 import Navigation from './Navigation.astro';
-import Hamburger from './Hamburger.astro';
 import ThemeIcon from './ThemeIcon.astro';
 ---
 
 
 <header class="header">
-    <div>
-        <a href="/">Home</a>
-    </div>
+    <a href="/">
+        <div class="header-logo">
+            <img class="header-logo-img" src="../../public/black-hole.svg" width="16" height="16" alt="site logo" decoding="async">
+            <span class="header-logo-title">Kazuho Note</span>
+        </div>
+    </a>
     <nav class="header-nav">
-        <Hamburger />
         <Navigation />
         <ThemeIcon />
     </nav>
