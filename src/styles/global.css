@@ -147,7 +147,7 @@ main a:hover{
 /* ブログ記事のスタイル　*/
 article {
   border-bottom: 1px solid #6A706E;
-  padding: 1rem 0.25rem 1.5rem;
+  padding: 1rem 0rem 1.5rem;
 }
 
 article:last-child {
