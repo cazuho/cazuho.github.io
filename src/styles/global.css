@@ -25,19 +25,13 @@ body {
     box-sizing: border-box;
 }
 
-h1 {
-    margin: 1rem 0;
-    font-size: 1.5rem;
-}
-
-h2 {
-  
+h1, h2 {
   font-size: 1.125rem;
 }
 
 @media screen and (min-width: 64em) {
   h1 {
-    font-size: 2rem;
+    font-size: 1.125rem;
   }
 }
 

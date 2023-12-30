@@ -26,30 +26,32 @@ const nextPost = postIndex === 0 ? null : sortedPosts[postIndex - 1];
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
-    <p>{frontmatter.pubDate.slice(0, 10)}</p>
-    <h2>{frontmatter.title}</h2>
-    <p>{frontmatter.description}</p>
+    <article>
+        <time datetime={frontmatter.pubDate.slice(0, 10)}>{frontmatter.pubDate.slice(0, 10)}</time>
+        <h1>{frontmatter.title}</h2>
+        <p>{frontmatter.description}</p>
 
-    <div class="tags">
-        {frontmatter.tags.map((tag) => (
-            <p class="tag"><a href={`/tags/${tag}`}><i class="fa-solid fa-tags"></i>{tag}</a></p>
-        ))}
-    </div>
+        <div class="tags">
+            {frontmatter.tags.map((tag) => (
+                <p class="tag"><a href={`/tags/${tag}`}><i class="fa-solid fa-tags"></i>{tag}</a></p>
+            ))}
+        </div>
 
-    <slot />
+        <slot />
 
-    <nav class="page-nav">
-        <ul class="page-nav-list">
-            <li class="page-nav-item">
-                <!-- 前の記事（ある場合にのみ表示）-->
-                {prevPost && <a href={`${prevPost.url}`}><div class="page-nav-item-body"><span>PREV</span><span>{prevPost.frontmatter.title}</span></div></a>}
-            </li>
-            <li class="page-nav-item">
-                <!-- 次の記事（ある場合にのみ表示）-->
-                {nextPost && <a href={`${nextPost.url}`}><div class="page-nav-item-body"><span>NEXT</span><span>{nextPost.frontmatter.title}</span></div></a>}
-            </li>
-        </ul>
-    </nav>
+        <nav class="page-nav">
+            <ul class="page-nav-list">
+                <li class="page-nav-item">
+                    <!-- 前の記事（ある場合にのみ表示）-->
+                    {prevPost && <a href={`${prevPost.url}`}><div class="page-nav-item-body"><span>PREV</span><span>{prevPost.frontmatter.title}</span></div></a>}
+                </li>
+                <li class="page-nav-item">
+                    <!-- 次の記事（ある場合にのみ表示）-->
+                    {nextPost && <a href={`${nextPost.url}`}><div class="page-nav-item-body"><span>NEXT</span><span>{nextPost.frontmatter.title}</span></div></a>}
+                </li>
+            </ul>
+        </nav>
+    </article>
 </BaseLayout>
 
 <style>

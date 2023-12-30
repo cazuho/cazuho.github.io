@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogPost from '../../components/BlogPost.astro';
+import Pagination from '../../components/Pagination.astro';
+
+const allPosts = await Astro.glob('../posts/*.md');  
+
+export async function getStaticPaths({ paginate }) {
+
+    const allPosts = await Astro.glob('../posts/*.md');  
+
+    // 日付新しい順
+    const sortedPosts = allPosts.sort((a, b) => {
+        const aDate = new Date(a.frontmatter.pubDate);
+        const bDate = new Date(b.frontmatter.pubDate);
+        return bDate.getTime() - aDate.getTime();
+    });    
+
+    return paginate(sortedPosts, { pageSize: 5 });
+}
+// ページネーションされたデータは、すべて"page"プロパティとして渡されます
+const { page } = Astro.props;
+const pathname = new URL(Astro.request.url).pathname.split('/');
+const firstPath = pathname[1];
+const pageTitle = "pages"
+
+console.log(pathname);
+console.log(page);
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <section>
+        {page.data.map((post) => 
+            <BlogPost 
+                pubDate={post.frontmatter.pubDate}, 
+                url={post.url} title={post.frontmatter.title}, 
+                description={post.frontmatter.description}, 
+                tags={post.frontmatter.tags} 
+            />
+        )}
+    </section>
+
+    {allPosts.length > 10 ? (
+        <div class="mt-4">
+            <Pagination length={page.lastPage} 
+                currentUrl={page.url.current} 
+                currentPage={page.currentPage} 
+                firstUrl={`/${firstPath}`} 
+                prevUrl={page.url.prev} 
+                nextUrl={page.url.next} 
+                lastUrl={`/${firstPath}/${page.lastPage}`}
+            />
+        </div>
+    ) : null}
+</BaseLayout>
