@@ -1,15 +1,22 @@
 ---
+// このページがトップページになります
+// ここで記事一覧を表示します
+
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlogPost from '../components/BlogPost.astro';
+import Pagination from '../components/Pagination.astro';
 const allPosts = await Astro.glob('../pages/posts/*.md');
 const pageTitle = "Archives";
 
-// 日付新しい順
+// 日付新しい順に加えてページ数を10に制限
 const sortedPosts = allPosts.sort((a, b) => {
   const aDate = new Date(a.frontmatter.pubDate);
   const bDate = new Date(b.frontmatter.pubDate);
   return bDate.getTime() - aDate.getTime();
-});
+}).slice(0,10);
+
+const allPostLength = allPosts.length;
+const lastPage = Math.trunc(allPostLength / 10) + 1
 ---
 <BaseLayout pageTitle={pageTitle}>
     <section>
@@ -22,4 +29,18 @@ const sortedPosts = allPosts.sort((a, b) => {
             />
         )}
     </section>
+
+    {allPostLength > 10 ? (
+        <div>
+            <Pagination length={lastPage} 
+                currentUrl={'/'} 
+                currentPage={1} 
+                baseUrl={`/posts`}
+                firstUrl={`/`} 
+                prevUrl={undefined} 
+                nextUrl={'/posts/2'} 
+                lastUrl={`/posts/${lastPage}`}
+            />
+        </div>
+    ) : null}
 </BaseLayout>

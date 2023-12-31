@@ -16,16 +16,13 @@ export async function getStaticPaths({ paginate }) {
         return bDate.getTime() - aDate.getTime();
     });    
 
-    return paginate(sortedPosts, { pageSize: 5 });
+    return paginate(sortedPosts, { pageSize: 10 });
 }
 // ページネーションされたデータは、すべて"page"プロパティとして渡されます
 const { page } = Astro.props;
 const pathname = new URL(Astro.request.url).pathname.split('/');
-const firstPath = pathname[1];
+const path = pathname[1];
 const pageTitle = "pages"
-
-console.log(pathname);
-console.log(page);
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -41,14 +38,15 @@ console.log(page);
     </section>
 
     {allPosts.length > 10 ? (
-        <div class="mt-4">
+        <div>
             <Pagination length={page.lastPage} 
                 currentUrl={page.url.current} 
                 currentPage={page.currentPage} 
-                firstUrl={`/${firstPath}`} 
+                baseUrl={`/${path}`}
+                firstUrl={`/${path}/1`} 
                 prevUrl={page.url.prev} 
                 nextUrl={page.url.next} 
-                lastUrl={`/${firstPath}/${page.lastPage}`}
+                lastUrl={`/${path}/${page.lastPage}`}
             />
         </div>
     ) : null}

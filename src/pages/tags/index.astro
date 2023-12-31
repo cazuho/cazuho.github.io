@@ -11,7 +11,7 @@ const pageTitle = "Tag index";
         <h1>{pageTitle}</h1>
         <div class="tags">
             {tagAndCount.map((item) => (
-                <p class="tag"><a href={`/tags/${item[0]}`}><i class="fa-solid fa-tags"></i>{item[0]}</a><span class="article-count">({item[1]})</span></p>
+                <p class="tag"><a href={`/tags/${item[0]}/1`}><i class="fa-solid fa-tags"></i>{item[0]}</a><span class="article-count">({item[1]})</span></p>
             ))}
         </div>
     </article>

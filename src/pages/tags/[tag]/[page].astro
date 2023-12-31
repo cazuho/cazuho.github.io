@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BlogPost from '../../../components/BlogPost.astro';
+import Pagination from '../../../components/Pagination.astro';
+
+export async function getStaticPaths({paginate}) {
+
+    const allPosts = await Astro.glob('../../posts/*.md');  
+    // 全てのタグ取得
+    const uniqueTags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
+    // 投稿を日付新しい順で取得
+    const sortedPosts = allPosts.sort((a, b) => {
+        const aDate = new Date(a.frontmatter.pubDate);
+        const bDate = new Date(b.frontmatter.pubDate);
+        return bDate.getTime() - aDate.getTime();
+    });      
+
+    return uniqueTags.flatMap((tag) => {
+        const filteredPosts = sortedPosts.filter((post) => post.frontmatter.tags.includes(tag));
+        return paginate(filteredPosts, {
+            params: { tag },
+            props: { posts: filteredPosts },
+            pageSize: 10,
+        });
+    });
+}
+
+const { tag } = Astro.params;
+const { posts, page } = Astro.props;
+const pathname = new URL(Astro.request.url).pathname.split('/');
+const path = `${pathname[1]}/${pathname[2]}`;
+---
+<BaseLayout pageTitle={tag}>
+    <p><span class='tag-name'>{tag}</span>のタグが付いた記事一覧</p>
+    <section>
+        {posts.map((post) => 
+            <BlogPost pubDate={post.frontmatter.pubDate}, url={post.url} title={post.frontmatter.title}, description={post.frontmatter.description}, tags={post.frontmatter.tags} />
+        )}
+    </section>
+
+    {posts.length > 10 ? (
+        <div>
+            <Pagination length={page.lastPage} 
+                currentUrl={page.url.current} 
+                currentPage={page.currentPage} 
+                baseUrl={`/${path}`}
+                firstUrl={`/${path}/1`} 
+                prevUrl={page.url.prev} 
+                nextUrl={page.url.next} 
+                lastUrl={`/${path}/${page.lastPage}`}
+            />
+        </div>
+    ) : null}
+</BaseLayout>
+
+<style>
+    .tag-name {
+        font-weight: bold;
+    }
+</style>
