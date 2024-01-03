@@ -24,7 +24,7 @@ $$
 
 パッケージのインストール
 ```bash
-    $ npm install --save rehype-katex remark-math
+    $ npm install rehype-katex remark-math
 ```
 
 astro.config.mjsへの設定追加
