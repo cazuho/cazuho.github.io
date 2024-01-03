@@ -25,14 +25,13 @@ body {
     box-sizing: border-box;
 }
 
-h1, h2 {
+h1, h2, h3 {
   font-size: 1.125rem;
+  margin: 1.5rem 0;
 }
 
-@media screen and (min-width: 64em) {
-  h1 {
-    font-size: 1.125rem;
-  }
+.title {
+  margin: 0.67em 0;
 }
 
 nav ul {
@@ -142,6 +141,10 @@ main a:hover{
 article {
   border-bottom: 1px solid #6A706E;
   padding: 1rem 0rem 1.5rem;
+}
+
+pre {
+  padding: 0.5em;
 }
 
 article:last-child {

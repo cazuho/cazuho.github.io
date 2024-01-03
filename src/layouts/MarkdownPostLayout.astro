@@ -28,7 +28,7 @@ const nextPost = postIndex === 0 ? null : sortedPosts[postIndex - 1];
 <BaseLayout pageTitle={frontmatter.title}>
     <article>
         <time datetime={frontmatter.pubDate.slice(0, 10)}>{frontmatter.pubDate.slice(0, 10)}</time>
-        <h1>{frontmatter.title}</h2>
+        <h1 class="title">{frontmatter.title}</h2>
         <p>{frontmatter.description}</p>
 
         <div class="tags">

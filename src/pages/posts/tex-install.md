@@ -24,47 +24,47 @@ $$
 
 パッケージのインストール
 ```bash
-    $ npm install rehype-katex remark-math
+$ npm install rehype-katex remark-math
 ```
 
 astro.config.mjsへの設定追加
 
 ```javascript
-    import remarkMath from "remark-math";
-    import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 
-    export default defineConfig({
-        markdown: {
-            remarkPlugins: [remarkMath],
-            rehypePlugins: [rehypeKatex],
-        },
-    });
+export default defineConfig({
+    markdown: {
+        remarkPlugins: [remarkMath],
+        rehypePlugins: [rehypeKatex],
+    },
+});
 ```
 
 cssの追加
 
 ```html
-    <link 
-    rel="stylesheet" 
-    href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" 
-    integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" 
-    crossorigin="anonymous"
-    >
+<link 
+rel="stylesheet" 
+href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" 
+integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" 
+crossorigin="anonymous"
+>
 ```
 
 # 詰まった所
 
 上に書いた方法では次のようなエラーが出て数式を表示できなかった。
 ```
-    Cannot read properties of undefined (reading 'mathFlowInside')
+Cannot read properties of undefined (reading 'mathFlowInside')
 ```
 
 そこで、パッケージのバージョンを変えたところ解決した。
 ```json
-    {
-        "rehype-katex": "^6.0.3",
-        "remark-math": "^5.1.1"
-    }
+{
+    "rehype-katex": "^6.0.3",
+    "remark-math": "^5.1.1"
+}
 ```
 
 
