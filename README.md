@@ -1,4 +1,9 @@
-# Astro Starter Kit: Minimal
+# My Astro Blog
+これはAstroの公式チュートリアルを元に作成したブログサイトです。
+[こちら](https://cazuho.github.io/)からアクセスできます。
+以下の説明はデフォルトのままです。
+
+## Astro Starter Kit: Minimal
 
 ```sh
 npm create astro@latest -- --template minimal
